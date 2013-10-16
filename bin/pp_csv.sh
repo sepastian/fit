@@ -12,4 +12,4 @@ if [ ! -f "$FILE" ]; then
 fi
 
 sed '1d' "$FILE" | \
-awk -v columns="$(head -1 ${FILE})" -F ',' 'BEGIN{ split(columns,c,",") }{ for(i=1;i<=NF;i++){ printf("%s: %s\n", c[i], $i) }; print "--------"}'
+awk -v columns="$(head -1 ${FILE})" -F ',' 'BEGIN{ split(columns,c,",") }{ for(i=1;i<=NF;i++){ printf("%03d %s: %s\n", i, c[i], $i) }; print "--------"}'
